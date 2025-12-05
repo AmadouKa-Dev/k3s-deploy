@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: depense-bdd
+  serviceName: "bdd-gestion"
+  replicas: 1
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        app: depense-bdd
+    spec:
+      containers:
+      - name: bdd-depense
+        image: postgres:17-alpine
+        resources:
+          requests:
+            cpu: 20m
+            memory: 120Mi
+          limits:
+            cpu: 80m
+            memory: 180Mi
+        ports:
+        - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: bdd-config
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: 
+        - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 300Mi

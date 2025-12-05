@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+  name: backend-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - image: amadka/gestion-depense-backend
+        name: gestion-depense-backend
+        ports:
+          - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: backend-config
+        volumeMounts:
+        - name: static-volume
+          mountPath: /app/staticfiles
+        resources:
+          requests:
+            cpu: 20m
+            memory: 80Mi
+          limits:
+            cpu: 100m
+            memory: 150Mi
+      resources: {}
+      volumes:
+      - name: static-volume
+        emptyDir: {}
+status: {}
