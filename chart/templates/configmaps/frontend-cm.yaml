@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: frontend-config
 data:
-  NEXT_PUBLIC_API_URL: "http://51.21.196.86"
+  NEXT_PUBLIC_API_URL: "http://13.49.67.32"
   API_URL: "/api/"
