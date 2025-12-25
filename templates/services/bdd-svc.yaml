@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: depense-bdd
-  name: {{ .Values.deployment.bdd.name }}
+  name: {{ .Values.service.bdd.name }}
 spec:
   clusterIP: None
   ports:
