@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: frontend-svc
+  name: {{ .Values.service.frontend.name }}
+spec:
+  ports:
+  - protocol: TCP
+    port: {{ .Values.service.frontend.ports }}
+    targetPort: {{ .Values.service.frontend.targetPort }}
+  selector:
+    app: {{ .Values.deployment.frontend.labels }}
+  type: {{ .Values.deployment.frontend.type }}
+status:
+  loadBalancer: {}

@@ -1,0 +1,47 @@
+configmap:
+  backend:
+    name: backend-config
+    DB_HOST: bdd-svc.default.svc.cluster.local
+    DEBUG: "False" 
+  bdd:
+    name: bdd-config 
+  frontend:
+    name: frontend-config
+  nginx:
+    name: nginx-config
+
+deployment:
+  backend:
+    name: backend-deploy
+    labels: backend
+    replicasCount: 1
+    ports: 8000  
+  frontend:
+    name: frontend-deploy
+    labels: frontend
+    replicasCount: 1
+    ports: 3000  
+  bdd:
+    name: bdd
+    labels: depense-bdd
+    replicasCount: 1
+  nginx:
+    name: nginx-proxy
+    labels: nginx
+    replicasCount: 1
+    ports: 80
+
+service:
+  backend:
+    name: backend-service
+    ports: 8000
+    targetPort: 8000
+    type:
+  frontend:
+    name: frontend-service
+    ports: 3000
+    targetPort: 3000
+    type:
+  bdd:
+    name: bdd-svc
+    type:

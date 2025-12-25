@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: depense-bdd
-  name: bdd-svc
+  name: {{ .Values.deployment.bdd.name }}
 spec:
   clusterIP: None
   ports:
@@ -11,7 +11,7 @@ spec:
     port: 5432
     targetPort: 5432
   selector:
-    app: depense-bdd
-  type: ClusterIP
+    app: {{ .Values.deployment.bdd.labels }}
+  type: {{ .Values.deployment.bdd.type }}
 status:
   loadBalancer: {}

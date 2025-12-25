@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: backend-config
+  name: {{ .Values.configmap.backend.name }}
 data:
   DB_ENGINE: postgresql_psycopg2
   DB_NAME: gestion
-  DB_USER: postgres
-  DB_PASSWORD: amad
-  DB_HOST: bdd-svc.default.svc.cluster.local
+  DB_USER: postgres 
+  DB_PASSWORD: amad 
+  DB_HOST: {{ .Values.configmap.backend.DB_HOST }}
   DB_PORT: "5432"
   SECRET_KEY: django-insecure-*m^0ii!ni_b^4830xcuaumckn_!id7g6x1f#79%ri_-+4o2cdg
-  DEBUG: "False"
+  DEBUG: {{ .Values.configmap.backend.DEBUG }}

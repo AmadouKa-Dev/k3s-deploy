@@ -13,23 +13,23 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: frontend-service
+            name: {{ .Values.service.frontend.name }}
             port:
-              number: 3000
+              number: {{ .Values.service.frontend.ports }}
       
       - path: /api
         pathType: Prefix
         backend:
           service:
-            name: backend-service
+            name: {{ .Values.service.backend.name }}
             port:
-              number: 8000
+              number: {{ .Values.service.backend.ports }}
       
       # Nginx sert les statics
       - path: /static
         pathType: Prefix
         backend:
           service:
-            name: nginx-svc
+            name: {{ .Values.service.nginx.name }}
             port:
-              number: 80
+              number: {{ .Values.service.nginx.ports }}

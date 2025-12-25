@@ -2,26 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: frontend
-  name: frontend-deploy
+    app: {{ .Values.deployment.frontend.labels }}
+  name: {{ .Values.deployment.frontend.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.deployment.frontend.replicasCount }}
   selector:
     matchLabels:
-      app: frontend
+      app: {{ .Values.deployment.frontend.labels }}
   template:
     metadata:
       labels:
-        app: frontend
+        app: {{ .Values.deployment.frontend.labels }}
     spec:
       containers:
       - image: amadka/gestion-depense-frontend
         name: gestion-depense-frontend
         ports:
-          - containerPort: 3000
+          - containerPort: {{ .Values.deployment.frontend.ports }}
         envFrom:
           - configMapRef:
-              name: frontend-config
+              name: {{ .Values.configmap.frontend.name }}
         resources:
           requests:
             cpu: 50m

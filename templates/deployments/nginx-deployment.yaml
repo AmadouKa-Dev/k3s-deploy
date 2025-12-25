@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nginx
-  name: nginx-proxy
+    app: {{ .Values.deployment.nginx.labels }}
+  name: {{ .Values.deployment.nginx.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.deployment.nginx.replicasCount }}
   selector:
     matchLabels:
-      app: nginx
+      app: {{ .Values.deployment.nginx.labels }}
   template:
     metadata:
       labels:
-        app: nginx
+        app: {{ .Values.deployment.nginx.labels }}
     spec:
       containers:
       - image: nginx:stable-alpine
         name: nginx
         ports:
-          - containerPort: 80
+          - containerPort: {{ .Values.deployment.nginx.ports }}
         volumeMounts:
           - name: nginx-config
             mountPath: /etc/nginx/nginx.conf
@@ -35,7 +35,7 @@ spec:
       volumes:
         - name: nginx-config
           configMap:
-            name: nginx-config
+            name: {{ .Values.configmap.nginx.name }}
         - name: static-volume
           emptyDir: {}
 status: {}

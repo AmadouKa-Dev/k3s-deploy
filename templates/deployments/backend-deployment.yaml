@@ -2,26 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: backend
-  name: backend-deploy
+    app: {{ .Values.deployment.backend.labels }}
+  name: {{ .Values.deployment.backend.name }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.deployment.backend.replicasCount }}
   selector:
     matchLabels:
-      app: backend
+      app: {{ .Values.deployment.backend.labels }}
   template:
     metadata:
       labels:
-        app: backend
+        app: {{ .Values.deployment.backend.labels }}
     spec:
       containers:
       - image: amadka/gestion-depense-backend
         name: gestion-depense-backend
         ports:
-          - containerPort: 8000
+          - containerPort: {{ .Values.deployment.backend.ports }}
         envFrom:
           - configMapRef:
-              name: backend-config
+              name: {{ .Values.configmap.backend.name }}
         volumeMounts:
         - name: static-volume
           mountPath: /app/staticfiles

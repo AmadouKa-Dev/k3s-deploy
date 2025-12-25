@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: frontend-config
+  name: {{ .Values.configmap.frontend.name }}
 data:
   NEXT_PUBLIC_API_URL: "/"
   API_URL: "/api/"
