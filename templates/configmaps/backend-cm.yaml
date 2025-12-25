@@ -10,4 +10,4 @@ data:
   DB_HOST: {{ .Values.configmap.backend.DB_HOST }}
   DB_PORT: "5432"
   SECRET_KEY: django-insecure-*m^0ii!ni_b^4830xcuaumckn_!id7g6x1f#79%ri_-+4o2cdg
-  DEBUG: {{ .Values.configmap.backend.DEBUG }}
+  DEBUG: "False"

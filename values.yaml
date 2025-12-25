@@ -2,7 +2,6 @@ configmap:
   backend:
     name: backend-config
     DB_HOST: bdd-svc.default.svc.cluster.local
-    DEBUG: "False" 
   bdd:
     name: bdd-config 
   frontend:
