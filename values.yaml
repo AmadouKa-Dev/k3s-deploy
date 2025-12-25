@@ -36,12 +36,17 @@ service:
     name: backend-service
     ports: 8000
     targetPort: 8000
-    type:
+    type: ClusterIP
   frontend:
     name: frontend-service
     ports: 3000
     targetPort: 3000
-    type:
+    type: ClusterIP
   bdd:
     name: bdd-svc
-    type:
+    type: ClusterIP
+  nginx:
+    name: nginx-svc
+    ports: 80
+    targetPort: 80
+    type: ClusterIP
