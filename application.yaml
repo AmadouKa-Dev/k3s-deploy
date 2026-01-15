@@ -9,6 +9,7 @@ spec:
   source:
     repoURL: https://github.com/AmadouKa-Dev/k3s-deploy.git
     targetRevision: master
+    path: .
     helm:
       valueFiles:
         - values.yaml
