@@ -15,7 +15,7 @@ spec:
         app: {{ .Values.deployment.frontend.labels }}
     spec:
       containers:
-      - image: {{ .Values.deployment.frontend.image }}
+      - image: "{{ .Values.deployment.frontend.image }}:{{ .Values.deployment.frontend.tag }}"
         name: gestion-depense-frontend
         ports:
           - containerPort: {{ .Values.deployment.frontend.ports }}
