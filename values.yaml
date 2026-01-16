@@ -13,11 +13,13 @@ configmap:
 deployment:
   backend:
     name: backend-deploy
+    image: amadka/gestion-depense-backend:latest
     labels: backend
     replicasCount: 1
     ports: 8000  
   frontend:
     name: frontend-deploy
+    image: amadka/gestion-depense-frontend:latest
     labels: frontend
     replicasCount: 1
     ports: 3000  

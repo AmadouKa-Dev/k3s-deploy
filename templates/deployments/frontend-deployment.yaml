@@ -15,7 +15,7 @@ spec:
         app: {{ .Values.deployment.frontend.labels }}
     spec:
       containers:
-      - image: amadka/gestion-depense-frontend
+      - image: {{ .Values.deployment.frontend.image }}
         name: gestion-depense-frontend
         ports:
           - containerPort: {{ .Values.deployment.frontend.ports }}
