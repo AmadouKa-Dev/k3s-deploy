@@ -14,14 +14,14 @@ deployment:
   backend:
     name: backend-deploy
     image: amadka/gestion-depense-backend
-    tag: latest
+    tag: 98238f854320ec264332e366ef8b46eba9e8ae28
     labels: backend
     replicasCount: 1
     ports: 8000  
   frontend:
     name: frontend-deploy
     image: amadka/gestion-depense-frontend
-    tag: latest
+    tag: 98238f854320ec264332e366ef8b46eba9e8ae28
     labels: frontend
     replicasCount: 1
     ports: 3000  
